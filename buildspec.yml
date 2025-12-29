@@ -1,8 +1,14 @@
 version: 0.2
+
 phases:
+  install:
+    commands:
+      - yum install -y aws-cli
   build:
     commands:
-      - echo "Build completed"
+      - echo "Deploying to EC2"
+      - aws s3 sync . s3://YOUR-BUCKET-NAME
+
 artifacts:
   files:
     - '**/*'
